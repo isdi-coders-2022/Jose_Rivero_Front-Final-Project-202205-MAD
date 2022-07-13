@@ -1,4 +1,5 @@
 import { iProduct } from './product.model';
+import { iUser } from './user.model';
 
 export interface shopProduct {
   quantity: number;
@@ -7,10 +8,13 @@ export interface shopProduct {
 
 export interface iShopCart {
   id?: string;
-  owner: string;
+  owner: iUser;
   products?: Array<shopProduct>;
+}
+export interface iShopcartsState {
+  shopcarts: ReadonlyArray<iShopCart>;
 }
 
 export class ShopCart implements iShopCart {
-  constructor(public owner: string, public products?: Array<shopProduct>) {}
+  constructor(public owner: iUser, public products?: Array<shopProduct>) {}
 }
