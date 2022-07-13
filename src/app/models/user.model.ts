@@ -1,3 +1,6 @@
+import { iProduct } from './product.model';
+import { iShopCart, shopProduct } from './shopcart.model';
+
 export interface iUser {
   id?: string;
   name: string;
@@ -5,8 +8,8 @@ export interface iUser {
   password: string;
   address: string;
   payMethod: string;
-  shopCart?: string;
-  wishList?: string[];
+  shopCart?: iShopCart;
+  wishList?: iProduct[];
 }
 export class User implements iUser {
   constructor(
