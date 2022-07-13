@@ -11,6 +11,10 @@ export interface iUser {
   shopCart?: iShopCart;
   wishList?: iProduct[];
 }
+export interface iUsersState {
+  user: iUser;
+  token: string;
+}
 export class User implements iUser {
   constructor(
     public name: string,

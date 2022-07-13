@@ -9,6 +9,9 @@ export interface iProduct {
   size: string;
   image: string;
 }
+export interface iProductsState {
+  products: ReadonlyArray<iProduct>;
+}
 
 export class Product implements iProduct {
   constructor(
