@@ -10,7 +10,7 @@ export interface iProduct {
   image: string;
 }
 export interface iProductsState {
-  products: ReadonlyArray<iProduct>;
+  products: Array<iProduct>;
 }
 
 export class Product implements iProduct {
