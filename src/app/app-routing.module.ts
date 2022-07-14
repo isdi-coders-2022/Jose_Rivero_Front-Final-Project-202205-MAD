@@ -16,6 +16,12 @@ const routes: Routes = [
       import('./login/login.module').then((m) => m.LoginModule),
   },
   {
+    path: 'shopcart',
+    loadChildren: () =>
+      import('./shopcart/shopcart.module').then((m) => m.ShopcartModule),
+  },
+
+  {
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
@@ -23,6 +29,11 @@ const routes: Routes = [
     path: 'detail/:id',
     loadChildren: () =>
       import('./details/details.module').then((m) => m.DetailsModule),
+  },
+  {
+    path: 'favorite',
+    loadChildren: () =>
+      import('./favorite/favorite.module').then((m) => m.FavoriteModule),
   },
   /*   {
     path: 'notFound',
