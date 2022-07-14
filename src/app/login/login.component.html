@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div>
+  <div *ngIf="!viewRegister; else register">
+    <app-login-form> </app-login-form>
+    <p>
+      ¿No tienes cuenta aun?<span class="link" (click)="toggleRegister()">
+        <p class="link">Registrarse</p></span
+      >
+    </p>
+  </div>
+  <ng-template #register>
+    <app-register-form> </app-register-form>
+    <p><span class="link" (click)="toggleRegister()">Volver</span></p>
+  </ng-template>
+</div>

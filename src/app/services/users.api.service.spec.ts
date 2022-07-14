@@ -3,10 +3,11 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs';
 import { iUser } from '../models/user.model';
 import { UsersApiService } from './users.api.service';
 
-fdescribe('Given document api service', () => {
+describe('Given document api service', () => {
   let service: UsersApiService;
   let httpTestingController: HttpTestingController;
 
@@ -98,6 +99,34 @@ fdescribe('Given document api service', () => {
       expect(req.request.url).toBe('http://localhost:4500/user/login');
 
       req.flush({});
+    });
+  });
+  describe('When calling service.loginUser with token', () => {
+    it('Should fetch the matching user from the api', () => {
+      service.loginUser(undefined, 'token').subscribe((res) => {
+        expect(res).not.toBeNull();
+        expect(JSON.stringify(res)).toEqual(JSON.stringify({}));
+      });
+
+      const req = httpTestingController.expectOne({
+        method: 'POST',
+        url: 'http://localhost:9000/user/login',
+      });
+
+      expect(req.request.url).toBe('http://localhost:9000/user/login');
+
+      req.flush({});
+    });
+  });
+  describe('When calling service.loginUser without args', () => {
+    it('Should return an empty object as observable', () => {
+      const result = service.loginUser();
+      expect(result).toEqual(
+        {} as Observable<{
+          user: iUser;
+          token: string;
+        }>
+      );
     });
   });
   describe('When calling service.updateUser', () => {

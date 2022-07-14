@@ -1,1 +1,52 @@
-<p>register-form works!</p>
+<form>
+  <div>
+    <input
+      type="text"
+      name="name"
+      placeholder="Nombre"
+      [(ngModel)]="registerData.name"
+    />
+  </div>
+
+  <div>
+    <input
+      type="text"
+      name="email"
+      placeholder="Email"
+      [(ngModel)]="registerData.email"
+    />
+  </div>
+
+  <div>
+    <input
+      type="password"
+      name="password"
+      placeholder="Contraseña"
+      [(ngModel)]="registerData.password"
+    />
+  </div>
+
+  <div>
+    <input
+      type="text"
+      name="address"
+      placeholder="Dirección"
+      [(ngModel)]="registerData.address"
+    />
+  </div>
+  <div>
+    <input
+      type="text"
+      name="paymethod"
+      placeholder="Metodo Pago"
+      [(ngModel)]="registerData.payMethod"
+    />
+  </div>
+  <div>
+    <input type="checkbox" name="terminos" id="" required checked /> Acepto los
+    Términos y Condiciones de TumbaoCaribeño.
+  </div>
+
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+  <button (click)="handleSubmit()" type="submit">Registrarse</button>
+</form>
