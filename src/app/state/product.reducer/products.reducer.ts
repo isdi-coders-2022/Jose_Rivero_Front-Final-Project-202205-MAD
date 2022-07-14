@@ -3,7 +3,7 @@ import { iProduct } from 'src/app/models/product.model';
 import * as ac from './products.action.creators';
 
 export const initialState = {
-  products: [] as ReadonlyArray<iProduct>,
+  products: [] as Array<iProduct>,
 };
 
 export const productsReducer = createReducer(

@@ -22,7 +22,7 @@ import { environment } from 'src/environments/environment';
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production, // Restrict extension to log-only mode
+      logOnly: environment.production,
       autoPause: true,
     }),
   ],
