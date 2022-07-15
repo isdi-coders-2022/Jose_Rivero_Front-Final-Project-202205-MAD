@@ -9,7 +9,7 @@ import { User, iUser } from '../models/user.model';
 export class UsersApiService {
   apiUrl: string;
   constructor(public http: HttpClient) {
-    this.apiUrl = 'http://localhost:4500/user/';
+    this.apiUrl = 'http://localhost:4500/users/';
   }
 
   getUsers(): Observable<Array<iUser>> {
