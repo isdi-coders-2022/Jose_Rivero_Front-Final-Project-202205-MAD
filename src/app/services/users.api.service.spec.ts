@@ -40,10 +40,10 @@ describe('Given document api service', () => {
 
       const req = httpTestingController.expectOne({
         method: 'GET',
-        url: 'http://localhost:4500/user/',
+        url: 'http://localhost:4500/users/',
       });
 
-      expect(req.request.url).toBe('http://localhost:4500/user/');
+      expect(req.request.url).toBe('http://localhost:4500/users/');
 
       req.flush({});
     });
@@ -57,10 +57,10 @@ describe('Given document api service', () => {
 
       const req = httpTestingController.expectOne({
         method: 'GET',
-        url: 'http://localhost:4500/user/id',
+        url: 'http://localhost:4500/users/id',
       });
 
-      expect(req.request.url).toBe('http://localhost:4500/user/id');
+      expect(req.request.url).toBe('http://localhost:4500/users/id');
 
       req.flush({});
     });
@@ -74,10 +74,10 @@ describe('Given document api service', () => {
 
       const req = httpTestingController.expectOne({
         method: 'POST',
-        url: 'http://localhost:4500/user/',
+        url: 'http://localhost:4500/users/',
       });
 
-      expect(req.request.url).toBe('http://localhost:4500/user/');
+      expect(req.request.url).toBe('http://localhost:4500/users/');
 
       req.flush({});
     });
@@ -93,10 +93,10 @@ describe('Given document api service', () => {
 
       const req = httpTestingController.expectOne({
         method: 'POST',
-        url: 'http://localhost:4500/user/login',
+        url: 'http://localhost:4500/users/login',
       });
 
-      expect(req.request.url).toBe('http://localhost:4500/user/login');
+      expect(req.request.url).toBe('http://localhost:4500/users/login');
 
       req.flush({});
     });
@@ -110,10 +110,10 @@ describe('Given document api service', () => {
 
       const req = httpTestingController.expectOne({
         method: 'POST',
-        url: 'http://localhost:9000/user/login',
+        url: 'http://localhost:4500/users/login',
       });
 
-      expect(req.request.url).toBe('http://localhost:9000/user/login');
+      expect(req.request.url).toBe('http://localhost:4500/users/login');
 
       req.flush({});
     });
@@ -138,15 +138,15 @@ describe('Given document api service', () => {
 
       const req = httpTestingController.expectOne({
         method: 'PATCH',
-        url: 'http://localhost:4500/user/id',
+        url: 'http://localhost:4500/users/id',
       });
 
-      expect(req.request.url).toBe('http://localhost:4500/user/id');
+      expect(req.request.url).toBe('http://localhost:4500/users/id');
 
       req.flush({});
     });
   });
-  describe('When calling service.deleteSelfUser', () => {
+  describe('When calling service.deleteUser', () => {
     it('Should fetch the matching user from the api', () => {
       service.deleteUser('id').subscribe((res) => {
         expect(res).not.toBeNull();
@@ -155,10 +155,10 @@ describe('Given document api service', () => {
 
       const req = httpTestingController.expectOne({
         method: 'DELETE',
-        url: 'http://localhost:4500/user/id',
+        url: 'http://localhost:4500/users/id',
       });
 
-      expect(req.request.url).toBe('http://localhost:4500/user/id');
+      expect(req.request.url).toBe('http://localhost:4500/users/id');
 
       req.flush({});
     });
