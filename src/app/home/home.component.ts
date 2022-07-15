@@ -22,8 +22,12 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productApi.getProducts();
-
-    console.log(this.productApi.getProducts(), ' array product');
+    this.store
+      .select((state) => state.products)
+      .subscribe({
+        next: (data) => {
+          this.products = data.products;
+        },
+      });
   }
 }

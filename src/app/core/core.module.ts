@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ListComponent } from './list/list.component';
 import { CardComponent } from './card/card.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavMenuComponent,
     ListComponent,
     CardComponent,
-    NotFoundComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -24,7 +22,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavMenuComponent,
     ListComponent,
     CardComponent,
-    NotFoundComponent,
   ],
 })
 export class CoreModule {}

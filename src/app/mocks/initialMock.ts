@@ -17,14 +17,16 @@ export const mockInitialState: AppState = {
   products: {
     products: [
       {
-        name: '',
+        id: '1',
+        _id: '1',
+        name: 'fernando',
         price: 0,
         onSale: false,
         category: 'Tshirt',
         stock: 0,
         color: '',
         size: '',
-        image: '',
+        image: 'fernando',
       },
     ],
   },

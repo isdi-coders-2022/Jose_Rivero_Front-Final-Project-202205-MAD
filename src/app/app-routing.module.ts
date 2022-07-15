@@ -26,7 +26,7 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
-    path: 'detail/:id',
+    path: 'details/:id',
     loadChildren: () =>
       import('./details/details.module').then((m) => m.DetailsModule),
   },
@@ -35,14 +35,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./favorite/favorite.module').then((m) => m.FavoriteModule),
   },
-  /*   {
-    path: 'notFound',
-    loadChildren: () =>
-      import('./core/not-found/not-found.component').then(
-        (m) => m.NotFoundComponent
-      ),
-  }, */
-  { path: '**', redirectTo: 'notFound' },
+
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
