@@ -5,6 +5,10 @@ export const loadProducts = createAction(
   '[Products List] Load Products',
   props<{ products: Array<iProduct> }>()
 );
+export const loadProduct = createAction(
+  '[Products List] Load Products',
+  props<{ product: iProduct }>()
+);
 export const addProduct = createAction(
   '[Products List] Add Product',
   props<{ newProduct: iProduct }>()

@@ -23,7 +23,5 @@ export class CardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  saveHandle(): void {
-    //this.robotState.deleteRobot(this.robot._id as string);
-  }
+  saveHandle(): void {}
 }
