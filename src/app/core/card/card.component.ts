@@ -23,5 +23,4 @@ export class CardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  saveHandle(): void {}
 }

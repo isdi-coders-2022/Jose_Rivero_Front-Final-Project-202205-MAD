@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { iUser } from 'src/app/models/user.model';
+import { iUser } from '../../models/user.model';
 import { LocalStorageService } from 'src/app/services/local.storage.service';
 import { UsersApiService } from 'src/app/services/users.api.service';
 import { AppState } from 'src/app/state/app.state';

@@ -6,6 +6,7 @@ import { mockInitialState } from './mocks/initialMock';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Observable, of } from 'rxjs';
 import { iUser } from './models/user.model';
+import { iProduct } from './models/product.model';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -68,6 +69,19 @@ describe('AppComponent', () => {
       fixture.detectChanges();
 
       expect(app.store.dispatch).not.toHaveBeenCalled();
+    });
+  });
+  describe('When app is loaded is getproduct loaded', () => {
+    it('use store.dispatch', () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.componentInstance;
+      spyOn(app.productsApi, 'getProducts').and.returnValue(
+        of(mockInitialState.products.products)
+      );
+      spyOn(app.store, 'dispatch');
+      fixture.detectChanges();
+
+      expect(app.store.dispatch).toHaveBeenCalled();
     });
   });
 });

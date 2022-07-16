@@ -13,12 +13,13 @@ import { AppState } from '../state/app.state';
 })
 export class DetailsComponent implements OnInit {
   product!: iProduct;
+  quantity: number = 1;
 
   constructor(public store: Store<AppState>, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
     let idProd = this.route.snapshot.paramMap.get('id') as string;
-    console.log(idProd);
+
     this.store
       .select((state) => state.products)
       .subscribe({
@@ -26,9 +27,12 @@ export class DetailsComponent implements OnInit {
           this.product = data.products.find(
             (item) => item._id === idProd
           ) as iProduct;
-          console.log(data.products);
         },
       });
-    console.log(this.product);
   }
+
+  handleSubmit(change: string) {
+    change === 'increase' ? this.quantity++ : this.quantity--;
+  }
+  saveHandle() {}
 }

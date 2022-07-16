@@ -1,7 +1,58 @@
 <app-header></app-header>
 <p>user works!</p>
+<form>
+  <div>
+    <input
+      type="text"
+      name="name"
+      placeholder="Nombre"
+      [(ngModel)]="userData.name"
+    />
+  </div>
+
+  <div>
+    <input
+      type="text"
+      name="email"
+      placeholder="Email"
+      [(ngModel)]="userData.email"
+    />
+  </div>
+
+  <div>
+    <input
+      type="password"
+      name="password"
+      placeholder="Contraseña"
+      [(ngModel)]="userData.password"
+    />
+  </div>
+
+  <div>
+    <input
+      type="text"
+      name="address"
+      placeholder="Dirección"
+      [(ngModel)]="userData.address"
+    />
+  </div>
+  <div>
+    <input
+      type="text"
+      name="paymethod"
+      placeholder="Metodo Pago"
+      [(ngModel)]="userData.payMethod"
+    />
+  </div>
+  <div>
+    <input type="checkbox" name="cambios" id="" require checked /> He leido y
+    acepto los cambios realizados.
+  </div>
+
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+  <button (click)="handleSubmit()" type="submit">Guardar Cambios</button>
+</form>
 
 <a href="/login">INICIA SESION</a>
 
-<app-nav-menu></app-nav-menu>
 <app-footer></app-footer>
