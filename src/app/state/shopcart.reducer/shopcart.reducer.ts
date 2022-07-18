@@ -4,7 +4,7 @@ import { iShopCart } from 'src/app/models/shopcart.model';
 import * as ac from './shopcart.action.creators';
 
 export const initialState = {
-  shopcarts: [] as ReadonlyArray<iShopCart>,
+  shopcarts: [] as Array<iShopCart>,
 };
 
 export const shopcartsReducer = createReducer(

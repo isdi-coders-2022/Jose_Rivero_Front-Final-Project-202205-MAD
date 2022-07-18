@@ -9,12 +9,12 @@ import { ProductsApiService } from 'src/app/services/products.api.service';
 import { AppState } from 'src/app/state/app.state';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css'],
+  selector: 'app-shopcard',
+  templateUrl: './shopcard.component.html',
+  styleUrls: ['./shopcard.component.css'],
 })
-export class CardComponent implements OnInit {
-  @Input() product!: iProduct;
+export class ShopCardComponent implements OnInit {
+  @Input() product!: shopProduct;
 
   constructor(
     public productApi: ProductsApiService,

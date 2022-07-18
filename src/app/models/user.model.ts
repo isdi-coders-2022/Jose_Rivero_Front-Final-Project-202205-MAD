@@ -2,6 +2,7 @@ import { iProduct } from './product.model';
 import { iShopCart, shopProduct } from './shopcart.model';
 
 export interface iUser {
+  _id?: string;
   id?: string;
   name: string;
   email: string;

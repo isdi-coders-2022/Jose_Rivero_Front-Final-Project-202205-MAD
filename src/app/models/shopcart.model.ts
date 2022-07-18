@@ -7,12 +7,13 @@ export interface shopProduct {
 }
 
 export interface iShopCart {
+  _id?: string;
   id?: string;
   owner: iUser;
   products?: Array<shopProduct>;
 }
 export interface iShopcartsState {
-  shopcarts: ReadonlyArray<iShopCart>;
+  shopcarts: Array<iShopCart>;
 }
 
 export class ShopCart implements iShopCart {

@@ -7,6 +7,8 @@ import { UsersApiService } from './services/users.api.service';
 import { AppState } from './state/app.state';
 import { loadUser } from './state/users.reducer/user.action.creators';
 import * as acProduct from './state/product.reducer/products.action.creators';
+import { ShopcartsApiService } from './services/shopcart.api.service';
+import { loadShopCart } from './state/shopcart.reducer/shopcart.action.creators';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +17,17 @@ import * as acProduct from './state/product.reducer/products.action.creators';
 })
 export class AppComponent implements OnInit {
   title = 'Tumbao Caribeño';
+  user!: iUser;
   constructor(
     public localStorage: LocalStorageService,
     public store: Store<AppState>,
     public usersApi: UsersApiService,
-    public productsApi: ProductsApiService
+    public productsApi: ProductsApiService,
+    public shopcartApi: ShopcartsApiService
   ) {}
   ngOnInit(): void {
     let token = this.localStorage.getToken();
+
     if (token) {
       this.usersApi.loginUser(undefined, token).subscribe({
         next: (data) =>

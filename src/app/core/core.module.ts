@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ListComponent } from './list/list.component';
 import { CardComponent } from './card/card.component';
+import { ShopCardComponent } from './shopcard/shopcard.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CardComponent } from './card/card.component';
     NavMenuComponent,
     ListComponent,
     CardComponent,
+    ShopCardComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -22,6 +24,7 @@ import { CardComponent } from './card/card.component';
     NavMenuComponent,
     ListComponent,
     CardComponent,
+    ShopCardComponent,
   ],
 })
 export class CoreModule {}

@@ -1,5 +1,11 @@
 <app-header></app-header>
+<p>{{ user.name }}</p>
 
 <p>shopcart works!</p>
+<ul>
+  <li *ngFor="let product of shopcart">
+    <app-shopcard [product]="product"></app-shopcard>
+  </li>
+</ul>
 
 <app-footer></app-footer>
