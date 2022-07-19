@@ -24,4 +24,5 @@ export class ShopCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+  removeProduct() {}
 }

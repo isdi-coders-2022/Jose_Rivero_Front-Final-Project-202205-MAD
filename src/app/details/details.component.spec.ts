@@ -1,12 +1,17 @@
 import { CommonModule } from '@angular/common';
+
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { provideMockStore } from '@ngrx/store/testing';
+import { Observable } from 'rxjs';
 import { CoreModule } from '../core/core.module';
 import { mockInitialState } from '../mocks/initialMock';
-import { iProduct } from '../models/product.model';
+import { iShopCart } from '../models/shopcart.model';
 
 import { DetailsComponent } from './details.component';
 
@@ -30,7 +35,13 @@ describe('DetailsComponent', () => {
         },
         provideMockStore({ initialState: mockInitialState }),
       ],
-      imports: [RouterTestingModule, CoreModule, CommonModule, FormsModule],
+      imports: [
+        RouterTestingModule,
+        CoreModule,
+        CommonModule,
+        FormsModule,
+        HttpClientTestingModule,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DetailsComponent);
@@ -40,7 +51,6 @@ describe('DetailsComponent', () => {
   });
 
   it('should create', () => {
-    component.saveHandle();
     expect(component).toBeTruthy();
   });
   describe('When call the function with increase', () => {
@@ -53,6 +63,14 @@ describe('DetailsComponent', () => {
     it('should first', () => {
       component.handleSubmit('decrease');
       expect(component.quantity).toBe(0);
+    });
+  });
+  describe('When call the function saveHandle ', () => {
+    it('should first', () => {
+      component.saveHandle();
+      spyOn(component.shopCartApi, 'addProduct');
+
+      expect(component.shopCartApi).toHaveBeenCalled();
     });
   });
 });

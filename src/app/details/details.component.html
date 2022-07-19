@@ -17,6 +17,7 @@
     </select>
     <div>
       <label for="quantity">Qty:</label>
+
       <button
         (click)="handleSubmit('increase')"
         name="increase"
@@ -27,6 +28,7 @@
       </button>
 
       <button
+        *ngIf="quantity >= 2"
         (click)="handleSubmit('decrease')"
         name="decrease"
         type="button"
@@ -39,7 +41,7 @@
     </div>
     <div>{{ product.price }} €</div>
   </div>
+  <button type="submit" (click)="saveHandle()">Añadir a la compra</button>
 </form>
 
-<button (click)="saveHandle()">Añadir a la compra</button>
 <app-footer></app-footer>

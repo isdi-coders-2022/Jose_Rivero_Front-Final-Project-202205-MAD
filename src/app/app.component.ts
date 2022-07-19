@@ -18,6 +18,7 @@ import { loadShopCart } from './state/shopcart.reducer/shopcart.action.creators'
 export class AppComponent implements OnInit {
   title = 'Tumbao Caribeño';
   user!: iUser;
+
   constructor(
     public localStorage: LocalStorageService,
     public store: Store<AppState>,
@@ -30,10 +31,20 @@ export class AppComponent implements OnInit {
 
     if (token) {
       this.usersApi.loginUser(undefined, token).subscribe({
-        next: (data) =>
+        next: (data) => {
           this.store.dispatch(
             loadUser({ currentUser: data.user, token: data.token })
-          ),
+          );
+
+          this.shopcartApi
+            .getShopcart(String(data.user.shopCart), data.token)
+            .subscribe({
+              next: (data) => {
+                console.log('response', data);
+                this.store.dispatch(loadShopCart({ shopcarts: data }));
+              },
+            });
+        },
         error: (err) => {
           this.localStorage.clearToken();
         },

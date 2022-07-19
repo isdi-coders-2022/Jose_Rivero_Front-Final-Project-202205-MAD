@@ -24,30 +24,19 @@ export class ShopcartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let shopcartId = '';
     this.store
       .select((state) => state.users)
       .subscribe({
         next: (data) => {
           this.user = data.user;
-          shopcartId = data.user.shopCart as unknown as string;
         },
       });
-    this.shopCartApi.getShopcart(String(shopcartId)).subscribe({
-      next: (data) => {
-        this.store.dispatch(
-          loadShopCart({
-            shopcarts: data,
-          })
-        );
-        console.log(' SHGOPPRODCU', data);
-      },
-    });
-
     this.store
-      .select((state) => state.shopcarts.shopcarts)
+      .select((state) => state.shopcarts)
       .subscribe({
-        next: (data) => {},
+        next: (data) => {
+          this.shopcart = data.products as Array<shopProduct>;
+        },
       });
   }
 }

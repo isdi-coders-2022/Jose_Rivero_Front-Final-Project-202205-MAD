@@ -2,5 +2,9 @@
 
 <p>favorite works!</p>
 <p>{{ user.name }}</p>
-<app-list [products]="products"></app-list>
+<ul>
+  <li *ngFor="let product of products">
+    <app-favcard [product]="product"></app-favcard>
+  </li>
+</ul>
 <app-footer></app-footer>

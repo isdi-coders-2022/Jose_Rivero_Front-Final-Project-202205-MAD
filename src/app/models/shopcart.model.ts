@@ -12,9 +12,7 @@ export interface iShopCart {
   owner: iUser;
   products?: Array<shopProduct>;
 }
-export interface iShopcartsState {
-  shopcarts: Array<iShopCart>;
-}
+export type iShopcartsState = iShopCart;
 
 export class ShopCart implements iShopCart {
   constructor(public owner: iUser, public products?: Array<shopProduct>) {}

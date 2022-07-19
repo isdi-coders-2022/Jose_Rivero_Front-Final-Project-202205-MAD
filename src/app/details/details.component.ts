@@ -2,9 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { iProduct } from '../models/product.model';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
-import { LocalStorageService } from '../services/local.storage.service';
-import { ProductsApiService } from '../services/products.api.service';
 import { AppState } from '../state/app.state';
+import { ShopcartsApiService } from '../services/shopcart.api.service';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +14,11 @@ export class DetailsComponent implements OnInit {
   product!: iProduct;
   quantity: number = 1;
 
-  constructor(public store: Store<AppState>, public route: ActivatedRoute) {}
+  constructor(
+    public store: Store<AppState>,
+    public route: ActivatedRoute,
+    public shopCartApi: ShopcartsApiService
+  ) {}
 
   ngOnInit(): void {
     let idProd = this.route.snapshot.paramMap.get('id') as string;
@@ -34,5 +37,26 @@ export class DetailsComponent implements OnInit {
   handleSubmit(change: string) {
     change === 'increase' ? this.quantity++ : this.quantity--;
   }
-  saveHandle() {}
+  saveHandle() {
+    let token: string;
+    this.store
+      .select((state) => state.users)
+      .subscribe({ next: (data) => (token = data.token) });
+    this.store
+      .select((state) => state.shopcarts)
+      .subscribe({
+        next: (data) => {
+          this.shopCartApi
+            .addProduct(
+              {
+                quantity: this.quantity,
+                product: this.product,
+              },
+              data._id,
+              token
+            )
+            .subscribe();
+        },
+      });
+  }
 }

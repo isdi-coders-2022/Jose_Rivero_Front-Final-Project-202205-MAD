@@ -1,6 +1,6 @@
 <app-header></app-header>
-<p>user works!</p>
-<form>
+
+<form *ngIf="userData.name">
   <div>
     <input
       type="text"
@@ -21,15 +21,6 @@
 
   <div>
     <input
-      type="password"
-      name="password"
-      placeholder="Contraseña"
-      [(ngModel)]="userData.password"
-    />
-  </div>
-
-  <div>
-    <input
       type="text"
       name="address"
       placeholder="Dirección"
@@ -45,14 +36,21 @@
     />
   </div>
   <div>
-    <input type="checkbox" name="cambios" id="" require checked /> He leido y
-    acepto los cambios realizados.
+    <input type="checkbox" name="cambios" id="" required /> He leido y acepto
+    los cambios realizados.
   </div>
 
   <p *ngIf="errorMessage">{{ errorMessage }}</p>
   <button (click)="handleSubmit()" type="submit">Guardar Cambios</button>
 </form>
+<div></div>
 
-<a href="/login">INICIA SESION</a>
+<div *ngIf="viewRegister" type="button" (click)="handleSesion()">
+  <p>Cerrar Sesion</p>
+</div>
+<div *ngIf="!viewRegister">
+  <p>Debes iniciar sesion para poder comprobar tus datos de usuario</p>
+  <a href="/login">INICIA SESION</a>
+</div>
 
 <app-footer></app-footer>

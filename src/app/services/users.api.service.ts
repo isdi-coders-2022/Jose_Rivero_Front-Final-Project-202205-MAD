@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User, iUser } from '../models/user.model';
@@ -16,8 +16,15 @@ export class UsersApiService {
     return this.http.get(this.apiUrl) as Observable<Array<iUser>>;
   }
 
-  getUser(id: iUser['id']): Observable<iUser> {
-    return this.http.get(this.apiUrl + id) as Observable<iUser>;
+  getUser(id: iUser['id'], token: string): Observable<iUser> {
+    const httpOptions = {
+      method: 'GET',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.get(this.apiUrl + id, httpOptions) as Observable<iUser>;
   }
 
   addUser(user: iUser): Observable<{ user: iUser; token: string }> {
@@ -58,11 +65,33 @@ export class UsersApiService {
     }
   }
 
-  updateUser(id: iUser['id'], user: iUser): Observable<iUser> {
-    return this.http.patch(this.apiUrl + id, user) as Observable<iUser>;
+  updateUser(
+    id: iUser['id'],
+    userModified: Partial<iUser>,
+    token: string
+  ): Observable<iUser> {
+    const httpOptions = {
+      method: 'GET',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.patch(
+      this.apiUrl + id,
+      userModified,
+      httpOptions
+    ) as Observable<iUser>;
   }
 
-  deleteUser(id: iUser['id']): Observable<User> {
-    return this.http.delete(this.apiUrl + id) as Observable<User>;
+  deleteUser(id: iUser['id'], token: string): Observable<User> {
+    const httpOptions = {
+      method: 'GET',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.delete(this.apiUrl + id, httpOptions) as Observable<User>;
   }
 }

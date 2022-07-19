@@ -23,18 +23,19 @@ export class FavoriteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    let token: string;
     this.store
       .select((state) => state.users)
       .subscribe({
         next: (data) => {
           this.user = data.user;
+          this.userApi.getUser(data.user._id, data.token).subscribe({
+            next: (data) => {
+              this.user = data;
+              this.products = data.wishList as Array<iProduct>;
+            },
+          });
         },
       });
-    this.userApi.getUser(this.user._id).subscribe({
-      next: (data) => {
-        this.user = data;
-        this.products = data.wishList as Array<iProduct>;
-      },
-    });
   }
 }

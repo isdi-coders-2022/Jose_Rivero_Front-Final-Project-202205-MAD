@@ -63,7 +63,7 @@ describe('Given products api service', () => {
   });
   describe('When calling service.getShopcart with an id', () => {
     it('Should fetch the matching shopcart from the api', () => {
-      service.getShopcart('id').subscribe((res) => {
+      service.getShopcart('id', 'token').subscribe((res) => {
         expect(res).not.toBeNull();
         expect(JSON.stringify(res)).toEqual(JSON.stringify({}));
       });
@@ -80,7 +80,7 @@ describe('Given products api service', () => {
   });
   describe('When calling service.addProduct with an id', () => {
     it('Should fetch the updated products from the api', () => {
-      service.addProduct(mockShopProduct, 'id').subscribe((res) => {
+      service.addProduct(mockShopProduct, 'id', 'token').subscribe((res) => {
         expect(res).not.toBeNull();
         expect(JSON.stringify(res)).toEqual(JSON.stringify({}));
       });
