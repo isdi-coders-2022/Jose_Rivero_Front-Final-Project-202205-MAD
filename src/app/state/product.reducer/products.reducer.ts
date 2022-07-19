@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { iProduct } from 'src/app/models/product.model';
+import { iProduct } from '../../models/product.model';
 import * as ac from './products.action.creators';
 
 export const initialState = {

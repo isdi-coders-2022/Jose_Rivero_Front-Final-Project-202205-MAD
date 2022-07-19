@@ -1,10 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 
-import { iShopCart } from 'src/app/models/shopcart.model';
+import { iShopCart } from '../../models/shopcart.model';
 
 export const loadShopCart = createAction(
   '[Products List] Load ShopCart',
-  props<{ shopcarts: Array<iShopCart> }>()
+  props<{ shopcarts: iShopCart }>()
 );
 export const addProduct = createAction(
   '[Products List] Add Product',

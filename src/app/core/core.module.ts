@@ -7,6 +7,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ListComponent } from './list/list.component';
 import { CardComponent } from './card/card.component';
 
+import { ShopCardComponent } from './shopcard/shopcard.component';
+import { FavCardComponent } from './favCard/favcard.component';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -14,6 +17,8 @@ import { CardComponent } from './card/card.component';
     NavMenuComponent,
     ListComponent,
     CardComponent,
+    ShopCardComponent,
+    FavCardComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -22,6 +27,8 @@ import { CardComponent } from './card/card.component';
     NavMenuComponent,
     ListComponent,
     CardComponent,
+    ShopCardComponent,
+    FavCardComponent,
   ],
 })
 export class CoreModule {}

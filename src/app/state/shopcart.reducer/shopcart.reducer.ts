@@ -1,28 +1,25 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { iShopCart } from 'src/app/models/shopcart.model';
+import { iShopCart, shopProduct } from '../../models/shopcart.model';
 import * as ac from './shopcart.action.creators';
 
-export const initialState = {
-  shopcarts: [] as ReadonlyArray<iShopCart>,
-};
+export const initialState = {} as iShopCart;
 
 export const shopcartsReducer = createReducer(
   initialState,
-  on(ac.loadShopCart, (state, { shopcarts }) => ({
-    shopcarts: [...shopcarts],
-  })),
-  on(ac.addProduct, (state, { newProduct }) => ({
-    shopcarts: [...state.shopcarts, newProduct],
-  })),
+  on(ac.loadShopCart, (state, { shopcarts }) => shopcarts),
+  on(ac.addProduct, (state, { newProduct }) => ({ ...state, newProduct })),
   on(ac.updateProduct, (state, { modifiedProduct }) => ({
-    shopcarts: state.shopcarts.map((product) =>
-      product.id === modifiedProduct.id
-        ? { ...product, ...modifiedProduct }
-        : product
-    ),
+    ...state,
+    modifiedProduct,
   })),
-  on(ac.deleteProduct, (state, { idToDelete }) => ({
-    shopcarts: state.shopcarts.filter((product) => product.id !== idToDelete),
-  }))
+  on(
+    ac.deleteProduct,
+    (state, { idToDelete }) => (
+      (state.products = (state.products as Array<shopProduct>).filter(
+        (product) => product.product._id !== idToDelete
+      )),
+      { ...state }
+    )
+  )
 );

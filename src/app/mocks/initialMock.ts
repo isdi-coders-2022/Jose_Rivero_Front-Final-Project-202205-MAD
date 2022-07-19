@@ -31,32 +31,12 @@ export const mockInitialState: AppState = {
     ],
   },
   shopcarts: {
-    shopcarts: [
-      {
-        id: 'test',
-        owner: {
-          name: 'fernando',
-          email: 'confidencial@confidencial.com',
-          password: 'confidencial',
-          address: 'confidencial',
-          payMethod: 'confidencial',
-        },
-        products: [
-          {
-            quantity: 0,
-            product: {
-              name: '',
-              price: 0,
-              onSale: false,
-              category: 'Tshirt',
-              stock: 0,
-              color: '',
-              size: '',
-              image: '',
-            },
-          },
-        ],
-      },
-    ],
+    owner: {
+      name: 'fernando',
+      email: 'confidencial@confidencial.com',
+      password: 'confidencial',
+      address: 'confidencial',
+      payMethod: 'confidencial',
+    },
   },
 };

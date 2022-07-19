@@ -1,0 +1,7 @@
+<a routerLink="/details/{{ product.product._id }}"
+  ><img src="{{ product.product.image }}" alt="" width="130px" height="130px"
+/></a>
+<div>{{ product.product.name }}</div>
+<div>{{ product.product.price }} €</div>
+<div>{{ product.quantity }}</div>
+<div type="button" (click)="removeProduct()"><p>Eliminar producto</p></div>

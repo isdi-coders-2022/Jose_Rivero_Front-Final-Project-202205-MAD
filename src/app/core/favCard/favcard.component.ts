@@ -12,12 +12,13 @@ import { AppState } from 'src/app/state/app.state';
 import { loadUser } from 'src/app/state/users.reducer/user.action.creators';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css'],
+  selector: 'app-favcard',
+  templateUrl: './favcard.component.html',
+  styleUrls: ['./favcard.component.css'],
 })
-export class CardComponent implements OnInit {
+export class FavCardComponent implements OnInit {
   @Input() product!: iProduct;
+  aFavorite!: Array<iProduct>;
 
   constructor(
     public store: Store<AppState>,
@@ -28,31 +29,28 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {}
   favoriteSubmit() {
-    let aFavorite: Array<iProduct>;
     let token: string;
     this.store
       .select((state) => state.users)
       .subscribe({
         next: (data) => {
           token = data.token;
-          aFavorite = [
-            ...(data.user.wishList as Array<iProduct>),
-            this.product,
-          ];
-
+          this.aFavorite = data.user.wishList as Array<iProduct>;
+          console.log(this.product._id);
+          console.log(this.aFavorite[0]);
+          this.aFavorite = this.aFavorite.filter(
+            (item) => String(item) !== this.product._id
+          );
+          console.log(this.aFavorite);
           this.userApi
             .updateUser(
               data.user._id,
               {
-                wishList: aFavorite,
+                wishList: this.aFavorite,
               },
               token
             )
-            .subscribe({
-              next: (data) => {
-                this.router.navigate(['home']);
-              },
-            });
+            .subscribe({ next: (data) => this.router.navigate(['home']) });
         },
       });
   }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,14 +13,36 @@ export class ShopcartsApiService {
     this.apiUrl = 'http://localhost:4500/shopcart/';
   }
 
-  getShopcart(id: iShopCart['id']): Observable<Array<iShopCart>> {
-    return this.http.get(this.apiUrl + id) as Observable<Array<iShopCart>>;
+  getShopcart(id: iShopCart['id'], token: string): Observable<iShopCart> {
+    const httpOptions = {
+      method: 'GET',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.get(
+      this.apiUrl + id,
+      httpOptions
+    ) as Observable<iShopCart>;
   }
 
-  addProduct(product: shopProduct, id: iShopCart['id']): Observable<ShopCart> {
+  addProduct(
+    product: shopProduct,
+    id: iShopCart['id'],
+    token: string
+  ): Observable<ShopCart> {
+    const httpOptions = {
+      method: 'GET',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
     return this.http.patch(
       this.apiUrl + 'add/' + id,
-      product
+      product,
+      httpOptions
     ) as Observable<ShopCart>;
   }
 
