@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-  box-sizing: content-box;
+
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Creepster&display=swap");
+
+*,
+body,
+h1 {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Aclonica", sans-serif;
 }

@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+input {
+  margin-top: 2rem;
+  border-radius: 4px;
+}
+button {
+  margin: 2rem;
+  border: 1px solid green;
+  background-color: rgb(83, 188, 125);
+  border-radius: 5px;
+}

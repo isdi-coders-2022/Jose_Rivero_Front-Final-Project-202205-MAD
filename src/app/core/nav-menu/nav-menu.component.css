@@ -1,10 +1,29 @@
 li {
   list-style: none;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 0;
+}
+div {
+  padding-right: 2px;
+}
+img {
+  width: 25px;
+  padding-left: 1px;
+}
+.a:active {
+  transform: scale(0.98);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+nav {
+  margin-top: 4px;
 }

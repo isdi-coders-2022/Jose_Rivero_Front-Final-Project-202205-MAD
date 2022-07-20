@@ -1,10 +1,13 @@
 <app-header></app-header>
 
-<p>favorite works!</p>
-<p>{{ user.name }}</p>
+<div>
+  <h3>Lista de deseos de:</h3>
+  <p>{{ user.name }}</p>
+</div>
+
 <ul>
   <li *ngFor="let product of products">
-    <app-favcard [product]="product"></app-favcard>
+    <div class="container"><app-favcard [product]="product"></app-favcard></div>
   </li>
 </ul>
 <app-footer></app-footer>

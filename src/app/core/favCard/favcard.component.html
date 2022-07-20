@@ -1,14 +1,22 @@
-<div>
-  <a routerLink="/details/{{ product._id }}"
-    ><img src="{{ product.image }}" alt="" width="130px" height="130px"
-  /></a>
-  <img
-    type="button"
-    (click)="favoriteSubmit()"
-    class="favButton"
-    src="https://firebasestorage.googleapis.com/v0/b/tumbaocaribe-b6a1b.appspot.com/o/fi-rr-bookmarkwishlist.png?alt=media&token=916ff18d-16e9-4d31-8336-686505167472"
-    alt=""
-  />
-</div>
-<div>{{ product.name }}</div>
-<div>{{ product.price }} €</div>
+<section class="container">
+  <div>
+    <a routerLink="/details/{{ product._id }}"
+      ><img src="{{ product.image }}" alt="" width="130px" height="130px"
+    /></a>
+    <img
+      type="button"
+      (click)="favoriteSubmit()"
+      class="favButton"
+      src="https://firebasestorage.googleapis.com/v0/b/tumbaocaribe-b6a1b.appspot.com/o/fi-rr-bookmarkwishlist.png?alt=media&token=916ff18d-16e9-4d31-8336-686505167472"
+      alt=""
+    />
+  </div>
+  <section class="description">
+    <div>
+      <p>{{ product.name }}</p>
+    </div>
+    <div>
+      <p>{{ product.price }} €</p>
+    </div>
+  </section>
+</section>
