@@ -16,9 +16,7 @@ div {
   justify-content: center;
   align-items: center;
 }
-.firstOrder {
-  min-width: 50px;
-}
+
 p {
   font-size: 12px;
   display: flex;

@@ -68,7 +68,8 @@ describe('DetailsComponent', () => {
   describe('When call the function saveHandle ', () => {
     it('should first', () => {
       component.saveHandle();
-      spyOn(component.shopCartApi, 'addProduct');
+      spyOn(component.store, 'select');
+      spyOn(component.shopCartApi, 'addProduct').and.returnValue({});
 
       expect(component.shopCartApi).toHaveBeenCalled();
     });

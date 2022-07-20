@@ -10,3 +10,15 @@ h1 {
   margin: 0;
   font-family: "Aclonica", sans-serif;
 }
+
+.small-button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 6px;
+}

@@ -4,7 +4,9 @@
 <p>shopcart works!</p>
 <ul *ngIf="shopcart">
   <li *ngFor="let product of shopcart">
-    <app-shopcard [product]="product"></app-shopcard>
+    <div class="container">
+      <app-shopcard [product]="product"></app-shopcard>
+    </div>
   </li>
 </ul>
 
