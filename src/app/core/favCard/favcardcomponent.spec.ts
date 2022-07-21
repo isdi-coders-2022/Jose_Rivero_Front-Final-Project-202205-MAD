@@ -23,6 +23,7 @@ describe('FavCardComponent', () => {
     component = fixture.componentInstance;
     component.product = mockInitialState.products.products[0];
     component.aFavorite = mockInitialState.products.products;
+
     fixture.detectChanges();
   });
 
@@ -41,6 +42,7 @@ describe('FavCardComponent', () => {
       spyOn(component.router, 'navigate');
 
       fixture.detectChanges();
+      component.favoriteSubmit();
 
       expect(component.router.navigate).not.toHaveBeenCalled();
     });

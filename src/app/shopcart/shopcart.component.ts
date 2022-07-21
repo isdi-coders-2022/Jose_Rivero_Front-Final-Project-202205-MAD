@@ -49,7 +49,6 @@ export class ShopcartComponent implements OnInit {
           });
         },
       });
-    console.log(this.shopcart);
   }
 
   checkOut() {
