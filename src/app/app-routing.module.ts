@@ -35,6 +35,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./favorite/favorite.module').then((m) => m.FavoriteModule),
   },
+  {
+    path: 'final',
+    loadChildren: () =>
+      import('./finalPage/finalPage.module').then((m) => m.FinalPageModule),
+  },
 
   { path: '**', redirectTo: 'home' },
 ];

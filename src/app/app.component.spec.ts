@@ -6,7 +6,6 @@ import { mockInitialState } from './mocks/initialMock';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Observable, of } from 'rxjs';
 import { iUser } from './models/user.model';
-import { iProduct } from './models/product.model';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -37,7 +36,12 @@ describe('AppComponent', () => {
       spyOn(app.usersApi, 'loginUser').and.returnValue(
         of({ user: {} as iUser, token: '' })
       );
+
+      spyOn(app.shopcartApi, 'getShopcart').and.returnValue(
+        of(mockInitialState.shopcarts)
+      );
       spyOn(app.store, 'dispatch');
+
       fixture.detectChanges();
 
       expect(app.store.dispatch).toHaveBeenCalled();

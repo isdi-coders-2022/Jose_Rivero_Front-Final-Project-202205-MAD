@@ -1,4 +1,24 @@
 .favButton {
   position: absolute;
   float: initial;
+  opacity: 80%;
+  width: 20px;
+  background-color: azure;
+  border-radius: 2px;
+}
+div {
+  display: flex;
+}
+.description {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
 }

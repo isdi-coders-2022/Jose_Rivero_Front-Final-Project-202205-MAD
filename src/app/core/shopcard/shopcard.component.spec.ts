@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
+import { of } from 'rxjs';
 import { mockInitialState } from 'src/app/mocks/initialMock';
 import { shopProduct } from 'src/app/models/shopcart.model';
 import { CoreModule } from '../core.module';
@@ -39,6 +40,11 @@ describe('CardComponent', () => {
   });
 
   it('should create', () => {
+    spyOn(component.shopcart, 'updateProduct').and.returnValue(
+      of(mockInitialState.shopcarts)
+    );
+    fixture.detectChanges();
+    component.removeProduct();
     expect(component).toBeTruthy();
   });
 });

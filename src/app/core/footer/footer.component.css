@@ -1,0 +1,18 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(247, 247, 247, 0.658);
+  box-sizing: border-box;
+  min-width: 55vh;
+  border: 2px solid rgba(0, 0, 0, 0.153);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  justify-content: center;
+}
+address {
+  font-size: small;
+}

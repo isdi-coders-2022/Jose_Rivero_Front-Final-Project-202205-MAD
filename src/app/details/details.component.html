@@ -5,43 +5,44 @@
     <p>{{ product.name }}</p>
   </div>
 
-  <div><img src="{{ product.image }}" alt="" width="250px" /></div>
-</div>
-<form>
-  <div>
-    <label for="size">Size:</label
-    ><select name="size" id="size">
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-    </select>
+  <div><img src="{{ product.image }}" alt="" /></div>
+
+  <form>
     <div>
-      <label for="quantity">Qty:</label>
+      <label for="size">Size:</label
+      ><select name="size" id="size">
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+      </select>
+      <div>
+        <label for="quantity">Qty:</label>
 
-      <button
-        (click)="handleSubmit('increase')"
-        name="increase"
-        type="button"
-        size="4"
-      >
-        +
-      </button>
+        <button
+          (click)="handleSubmit('increase')"
+          name="increase"
+          type="button"
+          size="4"
+        >
+          +
+        </button>
 
-      <button
-        *ngIf="quantity >= 2"
-        (click)="handleSubmit('decrease')"
-        name="decrease"
-        type="button"
-        size="4"
-      >
-        -
-      </button>
+        <button
+          *ngIf="quantity >= 2"
+          (click)="handleSubmit('decrease')"
+          name="decrease"
+          type="button"
+          size="4"
+        >
+          -
+        </button>
 
-      <input type="text" id="cantidad" value="{{ quantity }}" size="4" />
+        <input type="text" id="cantidad" value="{{ quantity }}" size="4" />
+      </div>
+      <div>{{ product.price }} €</div>
     </div>
-    <div>{{ product.price }} €</div>
-  </div>
-  <button type="submit" (click)="saveHandle()">Añadir a la compra</button>
-</form>
+    <button type="submit" (click)="saveHandle()">Añadir a la compra</button>
+  </form>
+</div>
 
 <app-footer></app-footer>

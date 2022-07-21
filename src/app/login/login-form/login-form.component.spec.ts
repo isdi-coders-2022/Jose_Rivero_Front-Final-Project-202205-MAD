@@ -33,9 +33,13 @@ describe('LoginFormComponent', () => {
       spyOn(component.userApi, 'loginUser').and.returnValue(
         of({ user: {} as iUser, token: 'token' })
       );
-      spyOn(component.store, 'dispatch');
+
       spyOn(component.localStorage, 'saveToken');
       spyOn(component.router, 'navigate');
+      spyOn(component.shopcartApi, 'getShopcart').and.returnValue(
+        of(mockInitialState.shopcarts)
+      );
+      spyOn(component.store, 'dispatch');
       fixture.detectChanges();
 
       component.handleSubmit();
@@ -53,6 +57,7 @@ describe('LoginFormComponent', () => {
           throw new Error();
         })
       );
+
       fixture.detectChanges();
 
       component.handleSubmit();

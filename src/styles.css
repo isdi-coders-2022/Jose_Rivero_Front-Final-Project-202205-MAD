@@ -1,6 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-  box-sizing: content-box;
+
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Creepster&display=swap");
+
+*,
+h1 {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
+
+  font-family: "Aclonica", sans-serif;
+}
+body {
+  margin: 1rem;
+}
+
+.small-button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 6px;
+}
+.not-login {
+  margin-top: 50%;
 }

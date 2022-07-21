@@ -1,7 +1,26 @@
-<a routerLink="/details/{{ product.product._id }}"
-  ><img src="{{ product.product.image }}" alt="" width="130px" height="130px"
-/></a>
-<div>{{ product.product.name }}</div>
-<div>{{ product.product.price }} €</div>
-<div>{{ product.quantity }}</div>
-<div type="button" (click)="removeProduct()"><p>Eliminar producto</p></div>
+<section>
+  <div>
+    <a routerLink="/details/{{ product.product._id }}"
+      ><img
+        src="{{ product.product.image }}"
+        alt=""
+        width="100px"
+        height="100px"
+    /></a>
+  </div>
+
+  <section class="description">
+    <div>
+      <p>{{ product.product.name }}</p>
+    </div>
+    <div>
+      <p>Price {{ product.product.price }} €</p>
+    </div>
+    <div>
+      <p>Qty: {{ product.quantity }}</p>
+    </div>
+    <div type="button" (click)="removeProduct()" class="small-button">
+      <p>Eliminar producto</p>
+    </div>
+  </section>
+</section>

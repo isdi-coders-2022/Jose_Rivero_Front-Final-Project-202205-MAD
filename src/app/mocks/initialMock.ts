@@ -6,13 +6,15 @@ import { AppState } from '../state/app.state';
 export const mockInitialState: AppState = {
   users: {
     user: {
+      id: '1',
+      _id: '1',
       name: 'fernando',
       email: 'confidencial@confidencial.com',
       password: 'confidencial',
       address: 'confidencial',
       payMethod: 'confidencial',
     },
-    token: '',
+    token: '1',
   },
   products: {
     products: [
@@ -31,6 +33,8 @@ export const mockInitialState: AppState = {
     ],
   },
   shopcarts: {
+    _id: 'test',
+    id: 'test',
     owner: {
       name: 'fernando',
       email: 'confidencial@confidencial.com',
@@ -38,5 +42,22 @@ export const mockInitialState: AppState = {
       address: 'confidencial',
       payMethod: 'confidencial',
     },
+    products: [
+      {
+        quantity: 10,
+        product: {
+          id: '1',
+          _id: '1',
+          name: 'fernando',
+          price: 0,
+          onSale: false,
+          category: 'Tshirt',
+          stock: 0,
+          color: '',
+          size: '',
+          image: 'fernando',
+        },
+      },
+    ],
   },
 };

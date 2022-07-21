@@ -1,12 +1,12 @@
 <app-header></app-header>
 
-<form *ngIf="userData.name">
+<form *ngIf="userUpdate.name" class="update-form">
   <div>
     <input
       type="text"
       name="name"
       placeholder="Nombre"
-      [(ngModel)]="userData.name"
+      [(ngModel)]="userUpdate.name"
     />
   </div>
 
@@ -15,7 +15,7 @@
       type="text"
       name="email"
       placeholder="Email"
-      [(ngModel)]="userData.email"
+      [(ngModel)]="userUpdate.email"
     />
   </div>
 
@@ -24,7 +24,7 @@
       type="text"
       name="address"
       placeholder="Dirección"
-      [(ngModel)]="userData.address"
+      [(ngModel)]="userUpdate.address"
     />
   </div>
   <div>
@@ -32,23 +32,28 @@
       type="text"
       name="paymethod"
       placeholder="Metodo Pago"
-      [(ngModel)]="userData.payMethod"
+      [(ngModel)]="userUpdate.payMethod"
     />
   </div>
-  <div>
-    <input type="checkbox" name="cambios" id="" required /> He leido y acepto
-    los cambios realizados.
+  <div class="check-box">
+    <input type="checkbox" name="cambios" id="" required class="check" />
   </div>
+  <p>He leido y acepto los cambios realizados.</p>
 
   <p *ngIf="errorMessage">{{ errorMessage }}</p>
   <button (click)="handleSubmit()" type="submit">Guardar Cambios</button>
 </form>
 <div></div>
 
-<div *ngIf="viewRegister" type="button" (click)="handleSesion()">
+<div
+  *ngIf="viewRegister"
+  type="button"
+  class="small-button"
+  (click)="handleSesion()"
+>
   <p>Cerrar Sesion</p>
 </div>
-<div *ngIf="!viewRegister">
+<div *ngIf="!viewRegister" class="login-session">
   <p>Debes iniciar sesion para poder comprobar tus datos de usuario</p>
   <a href="/login">INICIA SESION</a>
 </div>

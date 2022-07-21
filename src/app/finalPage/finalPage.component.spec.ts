@@ -1,28 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-import { mockInitialState } from 'src/app/mocks/initialMock';
+import { CoreModule } from '../core/core.module';
+import { mockInitialState } from '../mocks/initialMock';
+import { FinalPageComponent } from './finalPage.component';
 
-import { NavMenuComponent } from './nav-menu.component';
-
-describe('NavMenuComponent', () => {
-  let component: NavMenuComponent;
-  let fixture: ComponentFixture<NavMenuComponent>;
+describe('HomeComponent', () => {
+  let component: FinalPageComponent;
+  let fixture: ComponentFixture<FinalPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, CommonModule],
+      declarations: [FinalPageComponent],
       providers: [provideMockStore({ initialState: mockInitialState })],
-      declarations: [NavMenuComponent],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        CoreModule,
+        CommonModule,
+      ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NavMenuComponent);
+    fixture = TestBed.createComponent(FinalPageComponent);
     component = fixture.componentInstance;
-    component.cart = 10;
-    component.wishList = 10;
     fixture.detectChanges();
   });
 

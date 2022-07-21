@@ -8,10 +8,9 @@ import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { provideMockStore } from '@ngrx/store/testing';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CoreModule } from '../core/core.module';
 import { mockInitialState } from '../mocks/initialMock';
-import { iShopCart } from '../models/shopcart.model';
 
 import { DetailsComponent } from './details.component';
 
@@ -66,11 +65,17 @@ describe('DetailsComponent', () => {
     });
   });
   describe('When call the function saveHandle ', () => {
-    it('should first', () => {
+    it('should be shopcartapi have been called', () => {
+      const fixture = TestBed.createComponent(DetailsComponent);
+      const component = fixture.componentInstance;
+      spyOn(component.shopCartApi, 'addProduct').and.returnValue(
+        of(mockInitialState.shopcarts)
+      );
+      spyOn(component.store, 'dispatch');
+      fixture.detectChanges();
       component.saveHandle();
-      spyOn(component.shopCartApi, 'addProduct');
 
-      expect(component.shopCartApi).toHaveBeenCalled();
+      expect(component.shopCartApi.addProduct).toHaveBeenCalled();
     });
   });
 });

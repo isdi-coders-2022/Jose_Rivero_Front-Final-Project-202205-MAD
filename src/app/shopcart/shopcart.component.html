@@ -1,11 +1,30 @@
 <app-header></app-header>
-<p>{{ user.name }}</p>
 
-<p>shopcart works!</p>
+<div *ngIf="shopcart">
+  <p>Carrito de:</p>
+  <p>{{ user.name }}</p>
+</div>
+<p *ngIf="!shopcart" class="not-login">
+  Debes iniciar Sesion para acceder a tu carrito
+</p>
+
+<p *ngIf="shopcart.length === 0" class="not-login">
+  Añade articulos para comprar
+</p>
+
 <ul *ngIf="shopcart">
   <li *ngFor="let product of shopcart">
-    <app-shopcard [product]="product"></app-shopcard>
+    <div class="container">
+      <app-shopcard [product]="product"></app-shopcard>
+    </div>
   </li>
 </ul>
-
+<div
+  type="button"
+  (click)="checkOut()"
+  class="small-button"
+  *ngIf="shopcart.length"
+>
+  <p>Comprar</p>
+</div>
 <app-footer></app-footer>

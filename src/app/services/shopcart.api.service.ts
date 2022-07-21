@@ -48,20 +48,38 @@ export class ShopcartsApiService {
 
   removeProduct(
     product: shopProduct,
-    id: iShopCart['id']
+    id: iShopCart['id'],
+    token: string
   ): Observable<ShopCart> {
+    const httpOptions = {
+      method: 'GET',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
     return this.http.patch(
       this.apiUrl + 'remove/' + id,
-      product.product.id
+      product.product.id,
+      httpOptions
     ) as Observable<ShopCart>;
   }
   updateProduct(
-    product: shopProduct,
-    id: iShopCart['id']
+    shopcart: iShopCart,
+    id: iShopCart['id'],
+    token: string
   ): Observable<ShopCart> {
-    return this.http.patch(this.apiUrl + id, product) as Observable<ShopCart>;
-  }
-  deleteProduct(id: iShopCart['id']): Observable<ShopCart> {
-    return this.http.delete(this.apiUrl + id) as Observable<ShopCart>;
+    const httpOptions = {
+      method: 'GET',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.patch(
+      this.apiUrl + id,
+      shopcart,
+      httpOptions
+    ) as Observable<ShopCart>;
   }
 }

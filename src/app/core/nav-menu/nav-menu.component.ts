@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { iProduct } from 'src/app/models/product.model';
+import { AppState } from 'src/app/state/app.state';
 
 @Component({
   selector: 'app-nav-menu',
@@ -6,7 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-menu.component.css'],
 })
 export class NavMenuComponent implements OnInit {
-  constructor() {}
+  cart!: number;
+  wishList!: number;
+  constructor(public store: Store<AppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store
+      .select((state) => state.shopcarts)
+      .subscribe({
+        next: (data) => (this.cart = data.products?.length as number),
+      });
+    this.store
+      .select((state) => state.users)
+      .subscribe({
+        next: (data) =>
+          (this.wishList = (data.user.wishList as Array<iProduct>)
+            .length as number),
+      });
+  }
 }

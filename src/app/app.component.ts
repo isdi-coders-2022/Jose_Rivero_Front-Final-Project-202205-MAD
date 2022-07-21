@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
             .getShopcart(String(data.user.shopCart), data.token)
             .subscribe({
               next: (data) => {
-                console.log('response', data);
                 this.store.dispatch(loadShopCart({ shopcarts: data }));
               },
             });
