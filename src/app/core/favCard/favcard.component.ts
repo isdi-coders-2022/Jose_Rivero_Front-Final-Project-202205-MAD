@@ -19,6 +19,8 @@ import { loadUser } from 'src/app/state/users.reducer/user.action.creators';
 export class FavCardComponent implements OnInit {
   @Input() product!: iProduct;
   aFavorite!: Array<iProduct>;
+  token!: string;
+  user!: iUser;
 
   constructor(
     public store: Store<AppState>,
@@ -29,29 +31,32 @@ export class FavCardComponent implements OnInit {
 
   ngOnInit(): void {}
   favoriteSubmit() {
-    let token: string;
     this.store
       .select((state) => state.users)
       .subscribe({
         next: (data) => {
-          token = data.token;
+          this.token = data.token;
           this.aFavorite = data.user.wishList as Array<iProduct>;
-          console.log(this.product._id);
-          console.log(this.aFavorite[0]);
+          this.user = { ...data.user };
+
           this.aFavorite = this.aFavorite.filter(
             (item) => String(item) !== this.product._id
           );
-          console.log(this.aFavorite);
-          this.userApi
-            .updateUser(
-              data.user._id,
-              {
-                wishList: this.aFavorite,
-              },
-              token
-            )
-            .subscribe({ next: (data) => this.router.navigate(['home']) });
         },
+      });
+    this.userApi
+      .updateUser(
+        this.user._id,
+        {
+          wishList: this.aFavorite,
+        },
+        this.token
+      )
+      .subscribe({
+        next: (data) =>
+          this.store.dispatch(
+            loadUser({ currentUser: data, token: this.token })
+          ),
       });
   }
 }

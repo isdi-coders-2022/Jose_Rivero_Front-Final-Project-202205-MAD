@@ -8,7 +8,7 @@ import { mockInitialState } from '../mocks/initialMock';
 import { iShopCart, shopProduct } from '../models/shopcart.model';
 import { ShopcartsApiService } from './shopcart.api.service';
 
-describe('Given products api service', () => {
+describe('Given shopcarts api service', () => {
   let service: ShopcartsApiService;
   let httpTestingController: HttpTestingController;
 
@@ -116,11 +116,7 @@ describe('Given products api service', () => {
   describe('When calling service.updateProduct with an id', () => {
     it('Should fetch the updated products in the shopcart from the api', () => {
       service
-        .updateProduct(
-          mockInitialState.shopcarts.products as shopProduct[],
-          'id',
-          'token'
-        )
+        .updateProduct(mockInitialState.shopcarts, 'id', 'token')
         .subscribe((res) => {
           expect(res).not.toBeNull();
           expect(JSON.stringify(res)).toEqual(JSON.stringify({}));

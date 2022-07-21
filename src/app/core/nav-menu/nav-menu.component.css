@@ -27,3 +27,16 @@ img {
 nav {
   margin-top: 4px;
 }
+p {
+  position: absolute;
+  font-size: 10px;
+  background-color: rgb(119, 207, 119);
+  border-radius: 10rem;
+  border: 1px solid rgb(59, 136, 59);
+  right: 0;
+  color: white;
+}
+.lenghts {
+  display: flex;
+  position: relative;
+}

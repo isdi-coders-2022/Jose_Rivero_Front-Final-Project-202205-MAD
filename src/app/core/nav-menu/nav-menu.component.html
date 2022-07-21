@@ -12,11 +12,14 @@
     </div>
     <div>
       <li>
-        <a routerLink="/favorite"
-          ><img
-            src="https://firebasestorage.googleapis.com/v0/b/tumbaocaribe-b6a1b.appspot.com/o/fi-rr-bookmarkwishlist.png?alt=media&token=916ff18d-16e9-4d31-8336-686505167472"
-            alt="favorite"
-        /></a>
+        <div class="lenghts">
+          <a routerLink="/favorite"
+            ><img
+              src="https://firebasestorage.googleapis.com/v0/b/tumbaocaribe-b6a1b.appspot.com/o/fi-rr-bookmarkwishlist.png?alt=media&token=916ff18d-16e9-4d31-8336-686505167472"
+              alt="favorite"
+          /></a>
+          <p *ngIf="wishList">{{ wishList }}</p>
+        </div>
       </li>
     </div>
     <div>
@@ -30,11 +33,14 @@
     </div>
     <div>
       <li>
-        <a routerLink="/shopcart"
-          ><img
-            src="https://firebasestorage.googleapis.com/v0/b/tumbaocaribe-b6a1b.appspot.com/o/fi-rr-shopping-bagbolsa.png?alt=media&token=3e25faae-fb61-46cb-b7d5-228241b0987f"
-            alt="shopcart"
-        /></a>
+        <div class="lenghts">
+          <a routerLink="/shopcart"
+            ><img
+              src="https://firebasestorage.googleapis.com/v0/b/tumbaocaribe-b6a1b.appspot.com/o/fi-rr-shopping-bagbolsa.png?alt=media&token=3e25faae-fb61-46cb-b7d5-228241b0987f"
+              alt="shopcart"
+          /></a>
+          <p *ngIf="cart">{{ cart }}</p>
+        </div>
       </li>
     </div>
   </ul>

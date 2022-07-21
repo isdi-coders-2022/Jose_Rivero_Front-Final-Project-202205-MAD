@@ -1,8 +1,9 @@
+import { Token } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { shopProduct } from 'src/app/models/shopcart.model';
+import { iShopCart, shopProduct } from 'src/app/models/shopcart.model';
 import { LocalStorageService } from 'src/app/services/local.storage.service';
 import { ProductsApiService } from 'src/app/services/products.api.service';
 import { ShopcartsApiService } from 'src/app/services/shopcart.api.service';
@@ -21,7 +22,8 @@ import {
 export class ShopCardComponent implements OnInit {
   @Input() product!: shopProduct;
   shopCart: Array<shopProduct> = [];
-  cartId!: string;
+  cart!: iShopCart;
+  token!: string;
 
   constructor(
     public productApi: ProductsApiService,
@@ -34,17 +36,21 @@ export class ShopCardComponent implements OnInit {
   ngOnInit(): void {
     this.store
       .select((state) => state.shopcarts)
-      .subscribe({ next: (data) => (this.cartId = data._id as string) });
-  }
-  removeProduct() {
+      .subscribe({ next: (data) => (this.cart = { ...data }) });
     this.store
       .select((state) => state.users)
+      .subscribe({ next: (data) => (this.token = data.token) });
+  }
+  removeProduct() {
+    const removedProduct: shopProduct = this.product;
+
+    this.cart.products = this.cart.products?.filter(
+      (item) => String(item.product._id) !== String(removedProduct.product._id)
+    );
+    this.shopcart
+      .updateProduct(this.cart, this.cart._id, this.token)
       .subscribe({
-        next: (data) => {
-          this.shopcart
-            .removeProduct(this.product, this.cartId, data.token)
-            .subscribe({ next: (data) => this.router.navigate(['home']) });
-        },
+        next: (data) => this.store.dispatch(loadShopCart({ shopcarts: data })),
       });
   }
 }

@@ -3,22 +3,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Creepster&display=swap");
 
 *,
-body,
 h1 {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
   font-family: "Aclonica", sans-serif;
+}
+body {
+  margin: 1rem;
 }
 
 .small-button {
   background-color: #4caf50; /* Green */
   border: none;
   color: white;
-  padding: 10px 15px;
+  padding: 8px 8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 6px;
+}
+.not-login {
+  margin-top: 50%;
 }

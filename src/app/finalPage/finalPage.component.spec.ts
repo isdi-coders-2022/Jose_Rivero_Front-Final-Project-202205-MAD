@@ -5,28 +5,25 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { CoreModule } from '../core/core.module';
 import { mockInitialState } from '../mocks/initialMock';
-import { Input } from '@angular/core';
+import { FinalPageComponent } from './finalPage.component';
 
-import { ShopcartComponent } from './shopcart.component';
-
-describe('ShopcartComponent', () => {
-  let component: ShopcartComponent;
-  let fixture: ComponentFixture<ShopcartComponent>;
+describe('HomeComponent', () => {
+  let component: FinalPageComponent;
+  let fixture: ComponentFixture<FinalPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ShopcartComponent],
+      declarations: [FinalPageComponent],
       providers: [provideMockStore({ initialState: mockInitialState })],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
         CoreModule,
         CommonModule,
-        Input,
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ShopcartComponent);
+    fixture = TestBed.createComponent(FinalPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

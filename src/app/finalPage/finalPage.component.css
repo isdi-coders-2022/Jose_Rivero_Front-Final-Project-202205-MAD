@@ -1,0 +1,68 @@
+.small-button {
+  margin-top: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+.imgr {
+  -webkit-animation: 3s rotate linear infinite;
+  animation: 3s rotate linear infinite;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+#imgr2 {
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+}
+.letter-i {
+  display: flex;
+}
+.colum {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.letter-sl {
+  align-items: flex-end;
+}
+.letter-sr {
+  display: flex;
+  flex-direction: column;
+}
+.letter-sr-container {
+  display: flex;
+}
+.isdi {
+  display: flex;
+}
+
+img {
+  height: 20px;
+  width: 20px;
+}
+
+div .d1 {
+  display: flex;
+  justify-content: space-between;
+}
+div .d2 {
+  display: flex;
+  justify-content: space-between;
+}

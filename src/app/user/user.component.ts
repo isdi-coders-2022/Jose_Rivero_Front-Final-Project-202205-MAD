@@ -14,6 +14,7 @@ import { loadUser } from '../state/users.reducer/user.action.creators';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
+  token!: string;
   viewRegister: boolean = false;
   userData: iUser = {
     name: '',
@@ -22,6 +23,14 @@ export class UserComponent implements OnInit {
     address: '',
     payMethod: '',
   };
+  userUpdate!: {
+    name: string;
+    email: string;
+    password: string;
+    address: string;
+    payMethod: string;
+  };
+
   errorMessage!: string;
   constructor(
     public userApi: UsersApiService,
@@ -38,11 +47,34 @@ export class UserComponent implements OnInit {
           if (data.token) {
             this.userData = data.user;
             this.viewRegister = true;
+            this.token = data.token;
           }
         },
       });
+    this.userUpdate = { ...this.userData };
   }
-  handleSubmit() {}
+  handleSubmit() {
+    const newUser: iUser = {
+      name: this.userUpdate.name,
+      email: this.userUpdate.email,
+      password: this.userUpdate.password,
+      address: this.userUpdate.address,
+      payMethod: this.userUpdate.payMethod,
+    };
+    this.userApi.updateUser(this.userData._id, newUser, this.token).subscribe({
+      next: (data) =>
+        this.store.dispatch(
+          loadUser({
+            currentUser: data,
+
+            token: this.token,
+          })
+        ),
+    });
+
+    this.router.navigate(['home']);
+  }
+
   handleSesion() {
     console.log(this.viewRegister);
     this.viewRegister = false;

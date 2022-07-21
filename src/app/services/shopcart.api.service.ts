@@ -65,7 +65,7 @@ export class ShopcartsApiService {
     ) as Observable<ShopCart>;
   }
   updateProduct(
-    products: Array<shopProduct>,
+    shopcart: iShopCart,
     id: iShopCart['id'],
     token: string
   ): Observable<ShopCart> {
@@ -77,8 +77,8 @@ export class ShopcartsApiService {
       }),
     };
     return this.http.patch(
-      this.apiUrl + 'add/' + id,
-      products,
+      this.apiUrl + id,
+      shopcart,
       httpOptions
     ) as Observable<ShopCart>;
   }

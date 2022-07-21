@@ -42,10 +42,8 @@ export class LoginFormComponent implements OnInit {
             this.shopcartApi
               .getShopcart(String(data.user.shopCart), data.token)
               .subscribe({
-                next: (data) => {
-                  console.log('response', data);
-                  this.store.dispatch(loadShopCart({ shopcarts: data }));
-                },
+                next: (data) =>
+                  this.store.dispatch(loadShopCart({ shopcarts: data })),
               });
           }
         },
